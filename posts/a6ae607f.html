@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+
+  <!-- Minima -->
+  <!-- Hexo theme created by @adisaktijrs -->
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+
+  
+  <title>运营框架</title>
+  
+  <link rel="sitemap" href="https://www.hejie.xyzsitemap.xml" />
+  
+  <link rel="canonical" href="https://www.hejie.xyz/posts/a6ae607f.html">
+  
+  <meta name="description" content="自己对运营架构的理解   运营工作复杂度在介绍框架之前希望大家能知道运营的复杂度。简单来说就是运营只是一种思维，没有一个运营经验能完全套用在你负责的产品或者岗位中，因为实际情况在变化中，一切的工具方法在你的不同层次不同的周期以及负责岗位中都是你拿来用完成运营目标的，你需要在实际情况中不停的拆分使用你">
+  
+  
+  <meta name="author" content="HE JIE">
+  
+  
+  
+  <meta property="og:site_name" content="HE JIE" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="运营框架" />
+  
+  <meta property="og:description" content="自己对运营架构的理解   运营工作复杂度在介绍框架之前希望大家能知道运营的复杂度。简单来说就是运营只是一种思维，没有一个运营经验能完全套用在你负责的产品或者岗位中，因为实际情况在变化中，一切的工具方法在你的不同层次不同的周期以及负责岗位中都是你拿来用完成运营目标的，你需要在实际情况中不停的拆分使用你">
+  
+  <meta property="og:url" content="https://www.hejie.xyz/posts/a6ae607f.html" />
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="运营框架">
+  
+  <meta name="twitter:description" content="自己对运营架构的理解   运营工作复杂度在介绍框架之前希望大家能知道运营的复杂度。简单来说就是运营只是一种思维，没有一个运营经验能完全套用在你负责的产品或者岗位中，因为实际情况在变化中，一切的工具方法在你的不同层次不同的周期以及负责岗位中都是你拿来用完成运营目标的，你需要在实际情况中不停的拆分使用你">
+  
+  
+  
+  
+  <meta name="twitter:url" content="https://www.hejie.xyz/posts/a6ae607f.html" />
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Preload fonts
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="preload" href="/fonts/dm-serif-display-v4-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/inter-v2-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  
+<link rel="stylesheet" href="/css/normalize.css">
+
+  
+<link rel="stylesheet" href="/css/skeleton.css">
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+  
+<link rel="stylesheet" href="/css/prism-dark.css">
+
+  
+<link rel="stylesheet" href="/css/prism-line-numbers.css">
+
+  <!-- User css -->
+  
+  
+<link rel="stylesheet" href="/css/user.css">
+
+  
+
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="/images/favicon.png">
+
+  <!-- Custom Theme Color Style
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <style>
+  a:not(.icon) {
+    text-decoration-color: #0FA0CE;
+    background-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 50%,
+      #0FA0CE 50%
+    );
+  }
+  blockquote {
+    border-left: 8px solid #0FA0CE;
+  }
+  .nanobar .bar {
+    background: #0FA0CE;
+  }
+  .button.button-primary:hover,
+  button.button-primary:hover,
+  input[type="submit"].button-primary:hover,
+  input[type="reset"].button-primary:hover,
+  input[type="button"].button-primary:hover,
+  .button.button-primary:focus,
+  button.button-primary:focus,
+  input[type="submit"].button-primary:focus,
+  input[type="reset"].button-primary:focus,
+  input[type="button"].button-primary:focus {
+    background-color: #0FA0CE;
+    border-color: #0FA0CE;
+  }
+  input[type="email"]:focus,
+  input[type="number"]:focus,
+  input[type="search"]:focus,
+  input[type="text"]:focus,
+  input[type="tel"]:focus,
+  input[type="url"]:focus,
+  input[type="password"]:focus,
+  textarea:focus,
+  select:focus {
+    border: 1px solid #0FA0CE;
+  }
+</style>
+
+  <!-- Google Analytics (With Privacy Settings On)
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  
+
+  
+  <script src="/js/pic.min.js" defer></script>
+  
+
+  
+  <script src="/js/search.min.js" defer></script>
+  
+
+<meta name="generator" content="Hexo 5.4.2"><link rel="alternate" href="/atom.xml" title="HE JIE" type="application/atom+xml">
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div>
+
+        <div class="row">
+  <div class="two columns" style="max-width: 50px">
+    <h1 class="mt-2 mode">
+      <div onclick=setDarkMode(true) id="darkBtn">暗</div>
+      <div onclick=setDarkMode(false) id="lightBtn" class=hidden>亮</div>
+      <script >
+        if (localStorage.getItem('preferredTheme') == 'dark') {
+          setDarkMode(true)
+        }
+        function setDarkMode(isDark) {
+          var darkBtn = document.getElementById('darkBtn')
+          var lightBtn = document.getElementById('lightBtn')
+          if (isDark) {
+            lightBtn.style.display = "block"
+            darkBtn.style.display = "none"
+            localStorage.setItem('preferredTheme', 'dark');
+          } else {
+            lightBtn.style.display = "none"
+            darkBtn.style.display = "block"
+            localStorage.removeItem('preferredTheme');
+          }
+          document.body.classList.toggle("darkmode");
+        }
+      </script>
+    </h1>
+  </div>
+
+  <div class="six columns ml-1">
+    <h1 class="mt-2">
+      我，何杰
+    </h1>
+  </div>
+
+  <div class="twelve columns">
+    <div class="row">
+      <div class="nine columns left">
+        <a href="/">Home</a>
+        
+          
+          <a href="/books" class="ml">书</a>
+          
+        
+          
+          <a href="/movies" class="ml">电影</a>
+          
+        
+        
+          
+            <a href="mailto:Chieh.Ho@hotmail.com" target="_blank" class="ml">Email</a>
+          
+        
+      </div>
+    </div>
+    <hr style="margin-bottom: 2.6rem">
+  </div>
+</div>
+
+        <div class="trans">
+            <h2>运营框架</h2>
+
+  <p>自己对运营架构的理解</p>
+<span id="more"></span>
+
+<h1 id="运营工作复杂度"><a href="#运营工作复杂度" class="headerlink" title="运营工作复杂度"></a>运营工作复杂度</h1><p>在介绍框架之前希望大家能知道运营的复杂度。简单来说就是运营只是一种思维，没有一个运营经验能完全套用在你负责的产品或者岗位中，因为实际情况在变化中，一切的工具方法在你的不同层次不同的周期以及负责岗位中都是你拿来用完成运营目标的，你需要在实际情况中不停的拆分使用你所掌握的工具方法。我们的用户在变化目标在变化需要的工具也会变化，但是思维要不停的进步。</p>
+<h1 id="运营框架"><a href="#运营框架" class="headerlink" title="运营框架"></a>运营框架</h1><p>我的运营运营框架是我对运营体面线点的认识，会随我在运营中不断的优化补充完善，自认为可以做为了解互联网运营工作的看板。其中第一层和第二层由于本人还没有阅历和经验达到那个层次，这个两层暂定不写。在第三层是我们作为一个运营时刻要有的底层逻辑。第四层是要知道我们的产品目前到底处在哪一个阶段之å要到哪个阶段，会有助于你从产品周期的角度理解你做的事情以及之后的运营安排。第五层属于常见的运营岗位分类以及常用的一些方法是操作层的事情，也就是我们日常的工作。<br>运营框架是帮助你理解定位运营的工作，如果你能理解我的这个框架我想你会知道，从第一层开始到第五层结束这是一套对商业的认识市场的判断到具体怎么做运营怎么操作的大纲。<br>这个框架内的事情不是单点的，你可能在其中的一个面但是你的工作可能是一个点，也有可能是在一个点但是要对一个面负责，里面的工作是互相交叉链接的，你要随时根据情况选择合适的工具方法。</p>
+<h2 id="第一层，商业的本质"><a href="#第一层，商业的本质" class="headerlink" title="第一层，商业的本质"></a>第一层，商业的本质</h2><p>留空</p>
+<h2 id="第二层，市场的理解"><a href="#第二层，市场的理解" class="headerlink" title="第二层，市场的理解"></a>第二层，市场的理解</h2><p>留空</p>
+<h2 id="第三层，运营底层逻辑"><a href="#第三层，运营底层逻辑" class="headerlink" title="第三层，运营底层逻辑"></a>第三层，运营底层逻辑</h2><h3 id="用户怎么养成的"><a href="#用户怎么养成的" class="headerlink" title="用户怎么养成的"></a>用户怎么养成的</h3><h3 id="需要时刻警惕的用户视角"><a href="#需要时刻警惕的用户视角" class="headerlink" title="需要时刻警惕的用户视角"></a>需要时刻警惕的用户视角</h3><h3 id="合格的运营人员必备的思维方式"><a href="#合格的运营人员必备的思维方式" class="headerlink" title="合格的运营人员必备的思维方式"></a>合格的运营人员必备的思维方式</h3><h3 id="一些方法"><a href="#一些方法" class="headerlink" title="一些方法"></a>一些方法</h3><ul>
+<li><a target="_blank" rel="noopener" href="http://hejie.xyz/index.php/archives/88/" title="根据业务逻辑搭建运营体系">根据业务逻辑搭建运营体系</a></li>
+</ul>
+<h2 id="第四层，产品周期"><a href="#第四层，产品周期" class="headerlink" title="第四层，产品周期"></a>第四层，产品周期</h2><h3 id="种子期"><a href="#种子期" class="headerlink" title="种子期"></a>种子期</h3><h3 id="萌芽期"><a href="#萌芽期" class="headerlink" title="萌芽期"></a>萌芽期</h3><h3 id="发展期"><a href="#发展期" class="headerlink" title="发展期"></a>发展期</h3><h3 id="衰退期"><a href="#衰退期" class="headerlink" title="衰退期"></a>衰退期</h3><h2 id="第五层，运营岗位分类和常用方法"><a href="#第五层，运营岗位分类和常用方法" class="headerlink" title="第五层，运营岗位分类和常用方法"></a>第五层，运营岗位分类和常用方法</h2><h3 id="用户运营"><a href="#用户运营" class="headerlink" title="用户运营"></a>用户运营</h3><h3 id="活动运营"><a href="#活动运营" class="headerlink" title="活动运营"></a>活动运营</h3><h4 id="线上"><a href="#线上" class="headerlink" title="线上"></a>线上</h4><ul>
+<li><a target="_blank" rel="noopener" href="http://hejie.xyz/index.php/archives/96/" title="活动运营九步走">活动运营九步走</a></li>
+</ul>
+<h4 id="线下"><a href="#线下" class="headerlink" title="线下"></a>线下</h4><h3 id="内容运营"><a href="#内容运营" class="headerlink" title="内容运营"></a>内容运营</h3><h3 id="产品运营"><a href="#产品运营" class="headerlink" title="产品运营"></a>产品运营</h3><h1 id="运营人员的级别"><a href="#运营人员的级别" class="headerlink" title="运营人员的级别"></a>运营人员的级别</h1><p>运营人员的级别其实和运营框架中的层次是能对应上的。</p>
+<h2 id="运营新手"><a href="#运营新手" class="headerlink" title="运营新手"></a>运营新手</h2><p>这个级别对应的是第五层，是作为刚接触运营的新手。此时你可能刚接触了运营知识，想踏入互联网运营这个行业。根据我的亲身经历和前辈的总结建议处在这层建议你，一努力的学习运营知识，不考虑对错的前提下把自己当成海绵尽可能的吸取运营知识。二，配合你的学习进度有节奏的寻找运营的工作，不可操之过急要等到你对运营有认识才能去面试。</p>
+<h2 id="运营专员"><a href="#运营专员" class="headerlink" title="运营专员"></a>运营专员</h2><p>做到了运营专员的程度此时你早已入门但是你目前还在第五层，也许你也有了自己喜欢的运营模块。随着你工作经验的积累能够熟悉的掌握某一块的运营工作，此时你需要做的是尽可能的接触多个运营模块的工作的，要做到了解知道熟悉把你放到一个模块中你也能不需要上级指导的进行工作，到这个时候你是专员还是小组Leader这些抬头都不是最重要的，重要的是这时你在工作要时刻完成线到面的过度。</p>
+<h2 id="运营负责人"><a href="#运营负责人" class="headerlink" title="运营负责人"></a>运营负责人</h2><p>到了这阶段你更多的情况下负责业务指标拆分你的工作分配到各个工作线，在每个关键节点上你要时刻把控。此时你的能力应该能涵盖第四层和第五层，你清楚的知道你负责的产品的情况处在的阶段，并且你也能根据业务指标合理的安排各阶段的业务目标并把业务分配下去。你也不再负责操作层面上的事情，更多的是定指标把方向定策略上。术已经不在是你的束ç¼，道才是你的追求，此时你要做到的一运营有深刻理解，二有属于自己的运营框架，三创造融合他人的运营底层框架方法论甚至工具，四多了解商业多了解市场。</p>
+<h2 id="运营经理-amp-运营老总"><a href="#运营经理-amp-运营老总" class="headerlink" title="运营经理 &amp; 运营老总"></a>运营经理 &amp; 运营老总</h2><p>会当凌绝顶，一览众山小。达到了这个境界的时候也都处在第一层第二层了，不需要人告诉你自己做什么了，你已经是到让别人做什么的程度。靠着你对商业的理解模式的创新市场的判断杀出一条你自己的路，已经是不可复制了，你也是我要成为的人了。</p>
+<p>写到这也都完成我对框架的介绍和对工作的理解了，但是你会说：“等等，第三层呢？”，其实第三层是你做运营人在你脑子刻下的东西，它容易入世但是不容易出世。第三层全是你个人的积累，别人无法完全复制，每个人都不同。<br>希望大家切记，运营只是一种思维，做事的思维，祝大家在路上越走越顺。</p>
+<p>©版权归属作者“HEJIE.XYZ &#x2F; 何杰”，转载请注明。谢谢~</p>
+
+  <p> — 2021年1月2日</p>
+  
+
+
+        </div>
+        <div class="row mt-2">
+  <h3>Search</h3>
+  <div><input id="search-text" title="search" class="search-text" type="text" placeholder="search......"></div>
+  <div style="margin-top: 1.5rem;">
+    <ul id="result"></ul>
+  </div>
+</div>
+        <div class="row mt-2">
+  
+    <div class="eight columns">
+      <!-- 
+      <p id="madewith">Made with ❤ and
+        <a class="footer-link icon" href="https://hexo.io" target="_blank" style="text-decoration: none;" rel="noreferrer" aria-label="Hexo.io">
+        <svg class="hexo svg-hov" width="14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Hexo.js</title><path d="M12 .007L1.57 6.056V18.05L12 23.995l10.43-6.049V5.952L12 .007zm4.798 17.105l-.939.521-.939-.521V12.94H9.08v4.172l-.94.521-.938-.521V6.89l.939-.521.939.521v4.172h5.84V6.89l.94-.521.938.521v10.222z"/></svg>
+        </a>
+        
+        at <a href="https://id.wikipedia.org/wiki/Shanghai" target="_blank" rel="noreferrer">上海，中国</a>.</p>
+        
+      -->
+      <p id="madewith">记录于
+        
+          <a href="https://id.wikipedia.org/wiki/Shanghai" target="_blank" rel="noreferrer">
+            上海，中国
+          </a>.
+      </p>
+      
+      <a href="https://beian.miit.gov.cn/" target="_blank">皖ICP备19020628号-1</a>
+    </div>
+
+    <!-- Sepcial thanks to https://simpleicons.org/ for the icons -->
+    <div class="four columns mb-3 posisi" >
+      
+
+      
+
+      
+
+      
+
+      
+
+    </div>
+  
+</div>
+
+      </div>
+
+    </div>
+
+  </div>
+  <script src="/js/nanobar.min.js"></script>
+
+  <script>
+    var options = {
+      classname: 'nanobar',
+      id: 'myNanobar'
+    };
+    var nanobar = new Nanobar(options);
+    nanobar.go(30);
+    nanobar.go(76);
+    nanobar.go(100);
+  </script>
+
+</body>
+
+</html>
