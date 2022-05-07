@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <link rel="alternate icon" type="image/png" href="/img/favicon.png">
+    <title>HE JIE | Life is fucking movie</title>
+    
+<link rel="stylesheet" href="/css/reset.css">
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<link rel="stylesheet" href="/css/markdown.css">
+
+    
+<link rel="stylesheet" href="/css/fonts.css">
+
+<meta name="generator" content="Hexo 5.4.2"><link rel="alternate" href="/atom.xml" title="HE JIE" type="application/atom+xml">
+</head>
+    <body>
+        <div class="paper">
+            <div class="paper-main">
+                
+                    <div class="post-header">
+    <a class="logo" href="/">HE JIE</a>
+    <a class="go-home" href="/">
+        <svg width="8" height="14" viewBox="0 0 8 14">
+            <path d="M7 1L1 7l6 6" stroke="#000" stroke-width="2" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </a>
+</div>
+                
+                <div class="post-main">
+
+    
+        <div class="post-main-title">
+            Docker
+        </div>
+        <div class="post-meta">
+            2021-03-01
+        </div>
+    
+
+    <div class="post-md">
+        <p>Docker 使用</p>
+<span id="more"></span>
+
+<h2 id="官方网站和帮助文档"><a href="#官方网站和帮助文档" class="headerlink" title="官方网站和帮助文档"></a>官方网站和帮助文档</h2><p><a target="_blank" rel="noopener" href="https://www.docker.com/">官方网站</a><br><a target="_blank" rel="noopener" href="https://docs.docker.com/">帮助文档</a></p>
+<h2 id="Docker为什么会出现？"><a href="#Docker为什么会出现？" class="headerlink" title="Docker为什么会出现？"></a>Docker为什么会出现？</h2><p>解决开发上线应用环境配置不一致的问题。</p>
+<h2 id="Docker与虚拟机的区别？"><a href="#Docker与虚拟机的区别？" class="headerlink" title="Docker与虚拟机的区别？"></a>Docker与虚拟机的区别？</h2><p>虚拟机：虚拟硬件模拟一个完整的操作系统，占用大量内存与存储容量<br>Docker：使用容器技术隔离运行在宿主机的内，容器没有自己的内核无虚拟硬件.</p>
+<h2 id="重要的概念"><a href="#重要的概念" class="headerlink" title="重要的概念"></a>重要的概念</h2><p>镜像（image）：镜像是创建容器的基础，本质上类似于系统，容器基于镜像进行搭建。一个镜像可以搭建多个容器。<br>容器（container）：容器是Docker的一种技术，用于使容器在镜像上创建应用。<br>仓库（repository）：与GitHub功能相当，存放镜像的地方，分为私用和公有。</p>
+<h2 id="Docker使用"><a href="#Docker使用" class="headerlink" title="Docker使用"></a>Docker使用</h2><h3 id="1-常用帮助命令"><a href="#1-常用帮助命令" class="headerlink" title="1,常用帮助命令"></a>1,常用帮助命令</h3><ul>
+<li>docker version      #显示版本信息</li>
+<li>docker info         #显示系统信息，包含镜像容器数量</li>
+<li>docker 命令 –help  #查询该命令的帮助信息</li>
+</ul>
+<h3 id="2-镜像命令"><a href="#2-镜像命令" class="headerlink" title="2,镜像命令"></a>2,镜像命令</h3><ol>
+<li><p>docker images #查看本机镜像</p>
+<ul>
+<li>docker images -a 列出所有镜像</li>
+<li>docker images -q 列出所有镜像ID</li>
+</ul>
+</li>
+<li><p>docker search #搜索镜像</p>
+</li>
+<li><p>docker pull   #拉去下载镜像</p>
+<ul>
+<li>docker pull 镜像名:版本号</li>
+</ul>
+</li>
+<li><p>docker rmi    #删除镜像</p>
+<ul>
+<li>docker rmi -f 镜像ID</li>
+<li>docker rmi -f 镜像ID 镜像ID…</li>
+<li>docker rmi if $(docker images -aq) #递归删除所有镜像</li>
+</ul>
+</li>
+</ol>
+<h3 id="3-容器常用命令"><a href="#3-容器常用命令" class="headerlink" title="3,容器常用命令"></a>3,容器常用命令</h3><p><strong>3.1,新建容器运行</strong></p>
+<ol>
+<li>docker run 镜像ID<ul>
+<li>–name 添加容器名称</li>
+<li>-d 后台运行</li>
+<li>-p<ul>
+<li>主机端口:容器端口 指定容器端口</li>
+<li>ip 主机端口：容器端口</li>
+<li>容器端口</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>-P 随机端口</li>
+<li>-it 使用交互方式运行，进入容器查看内容</li>
+</ul>
+<p><strong>3.2,列出所有运行的容器</strong></p>
+<p>docker ps</p>
+<p><strong>3.3,删除容器</strong></p>
+<ol>
+<li>docker rm<ul>
+<li>docker rm 镜像ID      #删除不在运行的容器</li>
+<li>docker rm -f $(docker ps -aq) #删除指定容器</li>
+<li>docker ps -a -q|xargs docker rm #删除所有容器</li>
+</ul>
+</li>
+</ol>
+<p><strong>3.4,启动停止重启强制停止</strong></p>
+<p>docker start 镜像ID     #启动容器<br>docker restart 镜像ID   #重启容器<br>docker stop 镜像ID      #停止容器<br>docker kill 镜像ID      #强制停止容器</p>
+<p><strong>3.5,退出容器</strong></p>
+<p>exit        #容器直接退出<br>ctrl p q    #容器退出不停止</p>
+<p><strong>3.6,查看日志</strong></p>
+<p>docker logs -tf  容器ID       #一直更新显示日志信息<br>docker logs –tail 数字 容器ID #显示需要的日志条数<br>docker logs -ft 容器ID  #跟着日志</p>
+<p><strong>3.7,查看容器源数组</strong></p>
+<p>docker inspect 容器ID</p>
+<p><strong>3.8,进入运行的容器</strong></p>
+<p>docker exec -it 容器ID bashshell #进入容器开启一个新终端<br>docker attach 容器ID #进入容器正在执行的终端</p>
+<p><strong>3.9,拷贝容器数据到主机</strong></p>
+<p>docker 容器ID：容器内路径 主机目的路径</p>
+<h3 id="4-容器数据卷"><a href="#4-容器数据卷" class="headerlink" title="4,容器数据卷"></a>4,容器数据卷</h3><p><strong>4.1,什么是容器数据卷解决了什么问题？</strong></p>
+<p>容器是将应用和数据打包在内，如果容器不存在了那么数据也就不存在。为了解决这个问题需要将容器同步到一个指定位置，使用挂载到主机上来实现。</p>
+<p><strong>4.2,数据卷的三种挂载方式</strong></p>
+<p>匿名挂载 docker -v 容器内路径<br>具名挂载 docker -v 名称:容器内路径<br>指定路径挂载 docker -v 主机路径:容器内路径</p>
+<p><strong>4.3,读取权限问题</strong></p>
+<p>ro权限，只能通过宿主机进行写入<br>docker -v 挂载方式:ro<br>rw权限，可读可写权限<br>docker -v 挂载方式:rw</p>
+<h3 id="5-DockerFile"><a href="#5-DockerFile" class="headerlink" title="5,DockerFile"></a>5,DockerFile</h3><p><strong>5.1,DockerFile本质就是构建自己的镜像</strong></p>
+<p><strong>5.2,构建步骤</strong></p>
+<ol>
+<li>使用构建命令写DockerFile文件</li>
+<li>docker build镜像</li>
+<li>docker run镜像</li>
+<li>发布镜像<ul>
+<li>hubdocker</li>
+<li>阿里云</li>
+<li>….</li>
+</ul>
+</li>
+</ol>
+<p><strong>5.3,常用构建命令</strong></p>
+<p>构建命令都是大写不能写错</p>
+<p>FROM - 构建的开始<br>MAINTAINER - 姓名+邮箱代表谁写的<br>RUN - 构建时需要运行的命令<br>ADD - 需要添加的内容<br>WORDDIR - 工作目录<br>VOLUME - 挂载目录<br>EXPOSE - 暴露端口配置<br>CMD - 启动容器需要运行的命令<br>ENTORPINT - 启动容器需要运行的命令<br>COPY - 将文件拷贝到镜像中<br>ENV - 设置环境变量</p>
+<p><strong>5.4,docker build</strong></p>
+<p>docker build -f 执行文件 -t 名称:版本信息 .</p>
+<p><strong>5.5,docker history</strong></p>
+<p>可以查看自己或者其他镜像的构建过程</p>
+<p><strong>5.6,CMD和ENTRYPOINT区别</strong></p>
+<p>©版权归属作者“HEJIE.XYZ &#x2F; 何杰”，转载请注明。谢谢~</p>
+
+    </div>
+
+</div>
+                <div class="footer">
+    <center>
+        <a target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=OVpRUFxRF1FWeUhIF1pWVA"
+            style="text-decoration:none;"><img
+                src="http://rescdn.qqmail.com/zh_CN/htmledition/images/function/qm_open/ico_mailme_01.png" /></a>
+    </center>
+    <center>
+        <a href="https://beian.miit.gov.cn/" target="_blank">皖ICP备19020628号-1</a>
+    </center>
+    <center>
+        <span>Copyright © 2022 HE JIE</span>
+    </center>
+
+<link rel="stylesheet" href="/css/a11y-dark.min.css">
+
+
+<script src="/js/highlight.min.js"></script>
+
+
+<script src="/js/highlightjs-line-numbers.js"></script>
+
+
+<script>
+    hljs.initHighlightingOnLoad();
+    hljs.initLineNumbersOnLoad();
+</script>
+
+            </div>
+        </div>
+    </body>
+</html>

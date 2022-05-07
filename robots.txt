@@ -1,0 +1,10 @@
+User-agent: *
+Disallow: /vendors/
+Disallow: /fonts/
+Disallow: /fancybox/
+Allow: /
+Allow: /archives
+Allow: /aboutme
+Allow: /js/
+Allow: /css/
+Sitemap: https://wwww.hejie.xyz/sitemap.xml,https://wwww.hejie.xyz/baidusitemap.xml

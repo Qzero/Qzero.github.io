@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <link rel="alternate icon" type="image/png" href="/img/favicon.png">
+    <title>HE JIE | Life is fucking movie</title>
+    
+<link rel="stylesheet" href="/css/reset.css">
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<link rel="stylesheet" href="/css/markdown.css">
+
+    
+<link rel="stylesheet" href="/css/fonts.css">
+
+<meta name="generator" content="Hexo 5.4.2"><link rel="alternate" href="/atom.xml" title="HE JIE" type="application/atom+xml">
+</head>
+    <body>
+        <div class="paper">
+            <div class="paper-main">
+                
+                    <div class="post-header">
+    <a class="logo" href="/">HE JIE</a>
+    <a class="go-home" href="/">
+        <svg width="8" height="14" viewBox="0 0 8 14">
+            <path d="M7 1L1 7l6 6" stroke="#000" stroke-width="2" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </a>
+</div>
+                
+                <div class="post-main">
+
+    
+        <div class="post-main-title">
+            服务器搭建Hexo
+        </div>
+        <div class="post-meta">
+            2021-03-17
+        </div>
+    
+
+    <div class="post-md">
+        <p>利用GitHook进行自动化部署vps的hexo网站</p>
+<span id="more"></span>
+
+<h2 id="软件支持"><a href="#软件支持" class="headerlink" title="软件支持"></a>软件支持</h2><p>Git<br>Nginx(个人使用宝塔面板进行安装管理)<br>Nodejs<br>Hexo</p>
+<h2 id="使用过的博客系统"><a href="#使用过的博客系统" class="headerlink" title="使用过的博客系统"></a>使用过的博客系统</h2><p>博客系统之前搭建网站的时候经常进行更换，一开始使用的是WordPress后来用了一段时间的Typecho最后转到了Hexo。<br>对比三个博客。WordPress功能最多过于庞大占用服务器资源。Typecho足够的轻量化但是编辑文章的时候比较麻烦。Hexo轻量化编辑文章方便。</p>
+<h2 id="利用githook实现一键部署"><a href="#利用githook实现一键部署" class="headerlink" title="利用githook实现一键部署"></a>利用githook实现一键部署</h2><p>原理使用git远程部署到vps中git仓库。hexo d将生成的网页public文件夹推送到vps，vps内当git仓库收到最新的推送，将收到的文件拷贝到网站目录中。</p>
+<p><strong>1，vps git搭建</strong></p>
+<ul>
+<li><p>1安装git<br>个人vps使用的是ubuntu安装命令apt-git install git，安装后可通过git –version查看git版本，显示版本信息说明安装完成。</p>
+</li>
+<li><p>1.2 创建git用户<br>使用命令adduser git跟着设置好密码</p>
+</li>
+<li><p>1.3 赋予git sudo权限</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chmod 740 /etc/sudoers</span><br><span class="line">vim /etc/sudoers</span><br></pre></td></tr></table></figure>
+
+<p>找到root行并添加git用户如下，修改后保存退出，修改回文件权限chmod 440 &#x2F;etc&#x2F;sudoers</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">root    ALL=(ALL:ALL) ALL</span><br><span class="line">git     ALL=(ALL:ALL) ALL</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>1.4 初始化仓库<br>git用户路径下创建中转裸仓库blog.git使用git –bare参数初始化裸仓库</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd /git</span><br><span class="line">mkdir blog.git</span><br><span class="line">cd blog.git</span><br><span class="line">git init --bare</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>1.5 创建网站目录<br>个人使用宝塔的linux面板进行创建创建管理，<a target="_blank" rel="noopener" href="https://www.bt.cn/">官网网址</a><br>使用类似宝塔linux面板的好处是方便创建网站和Nginx配置</p>
+</li>
+<li><p>1.6 配置ssh<br>到git用户目录下创建.ssh文件夹，将公钥复制到authorized_keys文件中。公钥地址一般在~&#x2F;.ssh&#x2F;id_rsa.pub。</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd /git</span><br><span class="line">mkdir .ssh</span><br><span class="line">cd .ssh</span><br><span class="line">vim authorized_keys</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>1.7 确保用户组的权限为git:git<br>用户组内包含blog.git .ssh 网站目录三个文件夹的权限是git:git<br>查看权限: ll &#x2F;git<br>更改权限：chown -R 用户名.组名 &#x2F;目录</p>
+</li>
+<li><p>1.8 配置Nginx<br>主要是设置开启启动和网站目录路径，个人使用宝塔的linux面板进行管理</p>
+</li>
+</ul>
+<p><strong>2 配置Git Hooks</strong></p>
+<ul>
+<li>2.1 创建post_-receive文件复制脚本<br>进入git&#x2F;blog.git&#x2F;hooks下创建post-receive复制脚本，赋予可执行权限chmod +x post-receive</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">echo &quot;post-receive hook is running...&quot;</span><br><span class="line"></span><br><span class="line">GIT_REPO=/home/git/blog.git</span><br><span class="line">TMP_GIT_CLONE=/tmp/blog</span><br><span class="line">PUBLIC_WWW=/var/www/blog</span><br><span class="line"></span><br><span class="line">rm -rf $&#123;TMP_GIT_CLONE&#125;</span><br><span class="line">git clone $GIT_REPO $TMP_GIT_CLONE</span><br><span class="line">rm -rf $&#123;PUBLIC_WWW&#125;/*</span><br><span class="line">cp -rf $&#123;TMP_GIT_CLONE&#125;/* $&#123;PUBLIC_WWW&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>3 本地Hexo配置</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># Deployment</span><br><span class="line">deploy:</span><br><span class="line">    type: git</span><br><span class="line">    # repo: git@VPS IP:/~/blog.git</span><br><span class="line">    branch: master</span><br></pre></td></tr></table></figure>
+
+<p>©版权归属作者“HEJIE.XYZ &#x2F; 何杰”，转载请注明。谢谢~</p>
+
+    </div>
+
+</div>
+                <div class="footer">
+    <center>
+        <a target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=OVpRUFxRF1FWeUhIF1pWVA"
+            style="text-decoration:none;"><img
+                src="http://rescdn.qqmail.com/zh_CN/htmledition/images/function/qm_open/ico_mailme_01.png" /></a>
+    </center>
+    <center>
+        <a href="https://beian.miit.gov.cn/" target="_blank">皖ICP备19020628号-1</a>
+    </center>
+    <center>
+        <span>Copyright © 2022 HE JIE</span>
+    </center>
+
+<link rel="stylesheet" href="/css/a11y-dark.min.css">
+
+
+<script src="/js/highlight.min.js"></script>
+
+
+<script src="/js/highlightjs-line-numbers.js"></script>
+
+
+<script>
+    hljs.initHighlightingOnLoad();
+    hljs.initLineNumbersOnLoad();
+</script>
+
+            </div>
+        </div>
+    </body>
+</html>
