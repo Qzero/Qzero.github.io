@@ -1,50 +1,212 @@
 <!DOCTYPE html>
-<html>
-    <head>
-    <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
-    <link rel="alternate icon" type="image/png" href="/img/favicon.png">
-    <title>HE JIE | Life is fucking movie</title>
-    
-<link rel="stylesheet" href="/css/reset.css">
+<html lang="zh-CN">
 
-    
-<link rel="stylesheet" href="/css/style.css">
+<head>
 
-    
-<link rel="stylesheet" href="/css/markdown.css">
+  <!-- Minima -->
+  <!-- Hexo theme created by @adisaktijrs -->
 
-    
-<link rel="stylesheet" href="/css/fonts.css">
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+
+  
+  <title>服务器搭建Hexo</title>
+  
+  <link rel="sitemap" href="https://www.hejie.xyzsitemap.xml" />
+  
+  <link rel="canonical" href="https://www.hejie.xyz/posts/fed583ef.html">
+  
+  <meta name="description" content="利用GitHook进行自动化部署vps的hexo网站   软件支持GitNginx(个人使用宝塔面板进行安装管理)NodejsHexo 使用过的博客系统博客系统之前搭建网站的时候经常进行更换，一开始使用的是WordPress后来用了一段时间的Typecho最后转到了Hexo。对比三个博客。WordP">
+  
+  
+  <meta name="author" content="HE JIE">
+  
+  
+  
+  <meta property="og:site_name" content="HE JIE" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="服务器搭建Hexo" />
+  
+  <meta property="og:description" content="利用GitHook进行自动化部署vps的hexo网站   软件支持GitNginx(个人使用宝塔面板进行安装管理)NodejsHexo 使用过的博客系统博客系统之前搭建网站的时候经常进行更换，一开始使用的是WordPress后来用了一段时间的Typecho最后转到了Hexo。对比三个博客。WordP">
+  
+  <meta property="og:url" content="https://www.hejie.xyz/posts/fed583ef.html" />
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="服务器搭建Hexo">
+  
+  <meta name="twitter:description" content="利用GitHook进行自动化部署vps的hexo网站   软件支持GitNginx(个人使用宝塔面板进行安装管理)NodejsHexo 使用过的博客系统博客系统之前搭建网站的时候经常进行更换，一开始使用的是WordPress后来用了一段时间的Typecho最后转到了Hexo。对比三个博客。WordP">
+  
+  
+  
+  
+  <meta name="twitter:url" content="https://www.hejie.xyz/posts/fed583ef.html" />
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Preload fonts
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="preload" href="/fonts/dm-serif-display-v4-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/inter-v2-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  
+<link rel="stylesheet" href="/css/normalize.css">
+
+  
+<link rel="stylesheet" href="/css/skeleton.css">
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+  
+<link rel="stylesheet" href="/css/prism-dark.css">
+
+  
+<link rel="stylesheet" href="/css/prism-line-numbers.css">
+
+  <!-- User css -->
+  
+  
+<link rel="stylesheet" href="/css/user.css">
+
+  
+
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="/images/favicon.png">
+
+  <!-- Custom Theme Color Style
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <style>
+  a:not(.icon) {
+    text-decoration-color: #0FA0CE;
+    background-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 50%,
+      #0FA0CE 50%
+    );
+  }
+  blockquote {
+    border-left: 8px solid #0FA0CE;
+  }
+  .nanobar .bar {
+    background: #0FA0CE;
+  }
+  .button.button-primary:hover,
+  button.button-primary:hover,
+  input[type="submit"].button-primary:hover,
+  input[type="reset"].button-primary:hover,
+  input[type="button"].button-primary:hover,
+  .button.button-primary:focus,
+  button.button-primary:focus,
+  input[type="submit"].button-primary:focus,
+  input[type="reset"].button-primary:focus,
+  input[type="button"].button-primary:focus {
+    background-color: #0FA0CE;
+    border-color: #0FA0CE;
+  }
+  input[type="email"]:focus,
+  input[type="number"]:focus,
+  input[type="search"]:focus,
+  input[type="text"]:focus,
+  input[type="tel"]:focus,
+  input[type="url"]:focus,
+  input[type="password"]:focus,
+  textarea:focus,
+  select:focus {
+    border: 1px solid #0FA0CE;
+  }
+</style>
+
+  <!-- Google Analytics (With Privacy Settings On)
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  
+
+  
+  <script src="/js/pic.min.js" defer></script>
+  
+
+  
+  <script src="/js/search.min.js" defer></script>
+  
 
 <meta name="generator" content="Hexo 5.4.2"><link rel="alternate" href="/atom.xml" title="HE JIE" type="application/atom+xml">
 </head>
-    <body>
-        <div class="paper">
-            <div class="paper-main">
-                
-                    <div class="post-header">
-    <a class="logo" href="/">HE JIE</a>
-    <a class="go-home" href="/">
-        <svg width="8" height="14" viewBox="0 0 8 14">
-            <path d="M7 1L1 7l6 6" stroke="#000" stroke-width="2" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-    </a>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div>
+
+        <div class="row">
+  <div class="two columns" style="max-width: 50px">
+    <h1 class="mt-2 mode">
+      <div onclick=setDarkMode(true) id="darkBtn">暗</div>
+      <div onclick=setDarkMode(false) id="lightBtn" class=hidden>亮</div>
+      <script >
+        if (localStorage.getItem('preferredTheme') == 'dark') {
+          setDarkMode(true)
+        }
+        function setDarkMode(isDark) {
+          var darkBtn = document.getElementById('darkBtn')
+          var lightBtn = document.getElementById('lightBtn')
+          if (isDark) {
+            lightBtn.style.display = "block"
+            darkBtn.style.display = "none"
+            localStorage.setItem('preferredTheme', 'dark');
+          } else {
+            lightBtn.style.display = "none"
+            darkBtn.style.display = "block"
+            localStorage.removeItem('preferredTheme');
+          }
+          document.body.classList.toggle("darkmode");
+        }
+      </script>
+    </h1>
+  </div>
+
+  <div class="six columns ml-1">
+    <h1 class="mt-2">
+      我，何杰
+    </h1>
+  </div>
+
+  <div class="twelve columns">
+    <div class="row">
+      <div class="nine columns left">
+        <a href="/">Home</a>
+        
+          
+          <a href="/archives" class="ml">归档</a>
+          
+        
+          
+          <a href="/books" class="ml">书</a>
+          
+        
+          
+          <a href="/movies" class="ml">电影</a>
+          
+        
+        
+          
+            <a href="mailto:Chieh.Ho@hotmail.com" target="_blank" class="ml">Email</a>
+          
+        
+      </div>
+    </div>
+    <hr style="margin-bottom: 2.6rem">
+  </div>
 </div>
-                
-                <div class="post-main">
 
-    
-        <div class="post-main-title">
-            服务器搭建Hexo
-        </div>
-        <div class="post-meta">
-            2021-03-17
-        </div>
-    
+        <div class="trans">
+            <h2>服务器搭建Hexo</h2>
 
-    <div class="post-md">
-        <p>利用GitHook进行自动化部署vps的hexo网站</p>
+  <p>利用GitHook进行自动化部署vps的hexo网站</p>
 <span id="more"></span>
 
 <h2 id="软件支持"><a href="#软件支持" class="headerlink" title="软件支持"></a>软件支持</h2><p>Git<br>Nginx(个人使用宝塔面板进行安装管理)<br>Nodejs<br>Hexo</p>
@@ -94,37 +256,96 @@
 
 <p>©版权归属作者“HEJIE.XYZ &#x2F; 何杰”，转载请注明。谢谢~</p>
 
+  <p> — 2021年3月17日</p>
+  
+  <hr>
+<section id="comments" class="mt-2 mb-3">
+
+  <div id="disqus_thread">
+    <a href="#" class="button button-primary" onclick="loadDisqus();return false;">View / Make Comments</a>
+  </div>
+
+  <script>
+    var disqus_config = function() {
+      this.page.url = 'https://www.hejie.xyz/posts/fed583ef.html';
+      this.page.identifier = 'posts/fed583ef.html';
+      this.page.title = '服务器搭建Hexo';
+    };
+
+    var is_disqus_loaded = false;
+
+    function loadDisqus() {
+      if (!is_disqus_loaded) {
+        is_disqus_loaded = true;
+
+        var d = document,
+          s = d.createElement('script');
+        s.src = 'https://disqus_jYIHlknqGe.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+      }
+    }
+
+  </script>
+  <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+
+        </div>
+        <div class="row mt-2">
+  <h3>Search</h3>
+  <div><input id="search-text" title="search" class="search-text" type="text" placeholder="search......"></div>
+  <div style="margin-top: 1.5rem;">
+    <ul id="result"></ul>
+  </div>
+</div>
+        <div class="row mt-2">
+  
+    <div class="eight columns">
+      <p id="madewith">Made with ❤ and
+        <a class="footer-link icon" href="https://hexo.io" target="_blank" style="text-decoration: none;" rel="noreferrer" aria-label="Hexo.io">
+        <svg class="hexo svg-hov" width="14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Hexo.js</title><path d="M12 .007L1.57 6.056V18.05L12 23.995l10.43-6.049V5.952L12 .007zm4.798 17.105l-.939.521-.939-.521V12.94H9.08v4.172l-.94.521-.938-.521V6.89l.939-.521.939.521v4.172h5.84V6.89l.94-.521.938.521v10.222z"/></svg>
+        </a>
+        
+        at <a href="https://beian.miit.gov.cn/" target="_blank" rel="noreferrer">皖ICP备19020628号-1</a>.</p>
+        
     </div>
 
+    <!-- Sepcial thanks to https://simpleicons.org/ for the icons -->
+    <div class="four columns mb-3 posisi" >
+      
+
+      
+
+      
+
+      
+
+      
+
+    </div>
+  
 </div>
-                <div class="footer">
-    <center>
-        <a target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=OVpRUFxRF1FWeUhIF1pWVA"
-            style="text-decoration:none;"><img
-                src="http://rescdn.qqmail.com/zh_CN/htmledition/images/function/qm_open/ico_mailme_01.png" /></a>
-    </center>
-    <center>
-        <a href="https://beian.miit.gov.cn/" target="_blank">皖ICP备19020628号-1</a>
-    </center>
-    <center>
-        <span>Copyright © 2022 HE JIE</span>
-    </center>
 
-<link rel="stylesheet" href="/css/a11y-dark.min.css">
+      </div>
 
+    </div>
 
-<script src="/js/highlight.min.js"></script>
+  </div>
+  <script src="/js/nanobar.min.js"></script>
 
+  <script>
+    var options = {
+      classname: 'nanobar',
+      id: 'myNanobar'
+    };
+    var nanobar = new Nanobar(options);
+    nanobar.go(30);
+    nanobar.go(76);
+    nanobar.go(100);
+  </script>
 
-<script src="/js/highlightjs-line-numbers.js"></script>
+</body>
 
-
-<script>
-    hljs.initHighlightingOnLoad();
-    hljs.initLineNumbersOnLoad();
-</script>
-
-            </div>
-        </div>
-    </body>
 </html>
