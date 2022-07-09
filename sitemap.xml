@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.hejie.xyz/webmaps/index.html</loc>
+    
+    <lastmod>2022-07-09</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://www.hejie.xyz/posts/2423e18.html</loc>
     
     <lastmod>2022-07-09</lastmod>
@@ -41,15 +50,6 @@
     <loc>https://www.hejie.xyz/posts/1add1c7b.html</loc>
     
     <lastmod>2022-07-09</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.hejie.xyz/webmaps/index.html</loc>
-    
-    <lastmod>2022-07-05</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
