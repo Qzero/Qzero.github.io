@@ -206,6 +206,38 @@
 
   <p> — 2022年9月5日</p>
   
+  <hr>
+<section id="comments" class="mt-2 mb-3">
+
+  <div id="disqus_thread">
+    <a href="#" class="button button-primary" onclick="loadDisqus();return false;">View / Make Comments</a>
+  </div>
+
+  <script>
+    var disqus_config = function() {
+      this.page.url = 'https://www.hejie.xyz/posts/e5cacaba.html';
+      this.page.identifier = 'posts/e5cacaba.html';
+      this.page.title = '闺女上学后';
+    };
+
+    var is_disqus_loaded = false;
+
+    function loadDisqus() {
+      if (!is_disqus_loaded) {
+        is_disqus_loaded = true;
+
+        var d = document,
+          s = d.createElement('script');
+        s.src = 'https://disqus_jYIHlknqGe.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+      }
+    }
+
+  </script>
+  <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
 
 
         </div>
