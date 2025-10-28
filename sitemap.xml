@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.hejie.xyz/aboutme/index.html</loc>
+    
+    <lastmod>2025-10-28</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://www.hejie.xyz/posts/9de58f9f.html</loc>
     
     <lastmod>2025-10-28</lastmod>
